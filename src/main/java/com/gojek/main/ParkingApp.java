@@ -13,6 +13,14 @@ public class ParkingApp {
 	private ParkingLot parkingLot;
 	
 	public void runCommand(String command, String[] params) {
+		try{
+			GojekCommands.valueOf(command);
+		}
+		catch(Exception ex) {
+			printOut(command + " is not recognised as a command");
+			printOut("Please try any of these commands: " + GojekCommands.valuesToString());
+			return;
+		}
 		switch(GojekCommands.valueOf(command)) {
 		case create_parking_lot:
 			createParkingLot(params);

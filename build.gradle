@@ -1,0 +1,23 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+version = '1.0'
+
+dependencies {
+    testCompile("junit:junit:4.+")
+    testCompile("org.mockito:mockito-all:1.9.5")
+}

@@ -24,14 +24,6 @@ public class Main {
 				while(!(commandLine = br.readLine()).equals("exit")) {
 					commandSplits = commandLine.split(" ");
 					String command = commandSplits[0];
-					try{
-						GojekCommands.valueOf(command);
-					}
-					catch(Exception ex) {
-						printOut(command + " is not recognised as a command");
-						printOut("Please try any of these commands: " + GojekCommands.valuesToString());
-						continue;
-					}
 					parkingApp.runCommand(command, commandSplits);
 				}
 			} catch (IOException e) {
