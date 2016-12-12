@@ -12,6 +12,8 @@ public class ParkingApp {
 	
 	private ParkingLot parkingLot;
 	
+	private StringBuilder output;
+	
 	public void runCommand(String command, String[] params) {
 		try{
 			GojekCommands.valueOf(command);
@@ -41,7 +43,7 @@ public class ParkingApp {
 			findRegNumByVehicleColor(params);
 			break;
 		case slot_numbers_for_cars_with_colour:
-			findSlotsByVehicleRegNum(params);
+			findSlotsByVehicleColor(params);
 			break;
 		default:
 			break;
@@ -105,7 +107,15 @@ public class ParkingApp {
 		printOut(String.join(",", parkingLot.findSlotsByVehicleRegNum(regNum)));
 	}
 	
+	public String getOutput() {
+		return output.toString();
+	}
+	
 	private void printOut(String message) {
+		output = this.output != null ? output.append(message)
+				.append(System.getProperty("line.separator")) 
+				: new StringBuilder(message); 
 		System.out.println(message);
 	}
+
 }
